@@ -1,0 +1,17 @@
+.desc-section{
+	background: #fff none repeat scroll 0 0;
+    color: #000;
+    left: 30px;
+    max-width: 360px;
+    padding: 15px;
+    position: absolute;
+    top: 30px;
+    width: 100%;
+}
+.myslider li{
+	position:relative;
+}
+.banner-img
+{
+	max-width:100%;
+]

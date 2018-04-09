@@ -1,0 +1,38 @@
+<?php $bannerCollection = $this->getBannerCollection();?>
+<?php if(Mage::helper('banner')->isEnabled() && count($bannerCollection) > 0):?>
+	<div class="hwg-banner">
+		<ul class="<?php if(count($bannerCollection)> 1): echo"bxslider"; else: echo "myslider"; endif;?>">
+			<?php foreach($bannerCollection as $banner):?>
+				<?php $bannerUrl = $banner->getImageUrl();?>
+					<li>
+						<?php if($banner->getDescription()):?>
+								<div class="desc-section"><?php echo $banner->getDescription();?></div>
+						<?php endif;?>
+						<?php if($bannerUrl):?>
+							<a href="<?php echo $bannerUrl; ?>">
+								<img class="banner-img" src="<?php echo Mage::getBaseUrl('media').'banner/' . $banner->getImage();?>" alt="<?php echo $banner->getImageTitle();?>" title="<?php echo $banner->getImageTitle(); ?>"/>
+							</a>
+						<?php else:?>
+								<img class="banner-img" src="<?php echo Mage::getBaseUrl('media').'banner/' . $banner->getImage();?>" alt="<?php echo $banner->getImageTitle();?>" title="<?php echo $banner->getImageTitle(); ?>"/>
+						<?php endif;?>
+					</li>
+			<?php endforeach;?>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			
+			var sliderPager    = "<?php echo Mage::helper('banner')->isSliderPager() == 0 ? false : true; ?>";
+			var sliderControls = "<?php echo Mage::helper('banner')->isSliderControls() == 0 ? false : true; ?>";
+			var sliderCaptions = "<?php echo Mage::helper('banner')->isSliderCaptions() == 0 ? false : true; ?>";
+
+			jQuery('.bxslider').bxSlider({
+				auto: true,
+				speed: 1000,
+				captions: sliderCaptions,
+				pager: sliderPager,
+				controls: sliderControls
+			});
+		});
+	</script>
+<?php endif;?>

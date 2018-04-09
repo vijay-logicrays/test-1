@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+		<reference name="head">
+			<action method="addCss"><stylesheet>banner/css/jquery-bxslider.css</stylesheet></action>		
+			<action method="addCss"><stylesheet>banner/css/banner.css</stylesheet></action>
+			<action ifconfig="banner/slider/activejs" method="addItem"><type>skin_js</type><name>banner/js/bxslider/jquery.bxslider.min.js</name></action>
+			<action ifconfig="banner/slider/activejs" method="addItem"><type>skin_js</type><name>banner/js/bxslider/plugins/jquery.fitvids.js</name></action>
+		</reference>		
+    </default>
+    <banner_index_index>
+        <reference name="root">
+			<action method="setTemplate">
+				<template>page/1column.phtml</template> 				
+			</action>
+        </reference>
+        <reference name="content">			   
+			<block type="banner/banner" name="banner" as="custom_top_banner" template="banner/banner.phtml" before="-">
+				<action method="setData"><name>code</name><value>home-banner</value></action>
+			</block>
+        </reference>
+    </banner_index_index>
+    <!--cms_index_index>
+        <reference name="content">
+            <block type="banner/banner" name="banner" before="content" template="banner/banner.phtml" after="breadcrumbs">
+				<action method="setData"><name>code</name><value>cms-banner</value></action>
+			</block>	
+        </reference>
+    </cms_index_index-->
+    <!--catalog_category_default>
+        <reference name="content">
+            <block type="banner/banner" name="banner" before="-" template="banner/banner.phtml">				
+				<action method="setData"><name>code</name><value>product_banner</value></action>				
+			</block>	
+		</reference>		
+    </catalog_category_default-->	
+</layout> 
